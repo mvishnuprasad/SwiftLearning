@@ -1,0 +1,114 @@
+//
+
+//  ViewController.swift
+
+//  Payment_Info
+
+//
+
+//  Created by VISHNU PRASAD M on 24/04/21.
+
+//
+
+
+
+import UIKit
+
+
+
+class ViewController: UIViewController {
+
+
+
+    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var textField: UITextField!
+
+    @IBOutlet weak var Button: UIButton!
+
+    @IBOutlet weak var svw: UIStackView!
+
+    var stringArr = [String]()
+
+    
+
+        
+
+    
+
+    override func viewDidLoad() {
+
+        //Button.layer.cornerRadius=10
+
+        svw.layer.cornerRadius=10
+
+            super.viewDidLoad()
+
+        stringArr = ["Priya","Gita","Sona","Tina","Arya"]
+
+        // Do any additional setup after loading the view.
+
+    }
+
+
+
+    @IBAction func onClick(_ sender: UIButton) {
+
+        if let txt = textField.text, !txt.isEmpty{
+
+            self.stringArr.insert(txt, at: 0)
+
+            tableView.beginUpdates()
+
+            tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
+
+            tableView.endUpdates()
+
+            textField.text = nil
+
+        }
+
+    }
+
+    
+
+}
+
+
+
+extension ViewController: UITableViewDelegate,UITableViewDataSource{
+
+    
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    return stringArr.count
+
+}
+
+
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    guard let cell =
+
+            tableView.dequeueReusableCell(withIdentifier: "EditTableViewCell", for: indexPath) as?
+
+            EditTableViewCell else {
+
+        return UITableViewCell()
+
+        
+
+    }
+
+    cell.labelName.text=stringArr[indexPath.row]
+
+return cell
+
+}
+
+
+
+}
+
