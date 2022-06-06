@@ -39,3 +39,21 @@ calculateUsingClosure (n1: Int, n2: Int, Operation :{ $0+$1 })
 //Accrding to trailing closure if last parameter is a closure we can remove the name of the parameter and enclose .
 calculateUsingClosure (n1: Int, n2: Int ) { $0+$1 }
 
+
+
+let array = [1,2,3,4,5,6]
+func add (n: Int)->Int{
+    return n+1
+}
+
+
+print(array.map(add))
+print(array.map({ (n: Int)->Int in
+    return n+1
+}))
+print(array.map({ (n)  in
+     n+1
+}))
+print(array.map{$0+1})
+
+
