@@ -38,8 +38,10 @@ calculateUsingClosure (n1: Int, n2: Int, Operation :{ (n1, n2) in n1+n2 })
 calculateUsingClosure (n1: Int, n2: Int, Operation :{ $0+$1 })
 //Accrding to trailing closure if last parameter is a closure we can remove the name of the parameter and enclose .
 calculateUsingClosure (n1: Int, n2: Int ) { $0+$1 }
-
-
+//or
+calculateUsingClosure (n1: Int, n2: Int){ (n1:Int, n2:Int)->Int in
+  return n1+n2
+}
 
 let array = [1,2,3,4,5,6]
 func add (n: Int)->Int{
