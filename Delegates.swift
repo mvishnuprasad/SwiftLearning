@@ -16,7 +16,7 @@ class EmergencyCallHandler1 {
 }
 
 
-// Worker or INtern (in another example) that ask the Protocol that I can Do the Job
+// Worker  (in another example) that ask the Protocol that I can Do the Job
 
 struct paraMedic1 : AdvancedLifeSupport1{
     init(handler: EmergencyCallHandler1){
