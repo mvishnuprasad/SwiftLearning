@@ -3,7 +3,7 @@ protocol AdvancedLifeSupport1 {
     func performCPR()
 }
 
-//class / Person that does / knows the Job
+//class / Person that does / knows the Job Eg: URLSession that fetches the data
 class EmergencyCallHandler1 {
     var delegate : AdvancedLifeSupport1?
     func assessSituation(){
@@ -16,7 +16,7 @@ class EmergencyCallHandler1 {
 }
 
 
-// Worker  (in another example) that ask the Protocol that I can Do the Job
+// Worker  (in another example) that ask the Protocol that I can Do the Job Eg: Viewcontroller that updates or makes changes to view
 
 struct paraMedic1 : AdvancedLifeSupport1{
     init(handler: EmergencyCallHandler1){
