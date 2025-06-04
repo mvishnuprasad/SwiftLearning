@@ -9,3 +9,7 @@ My sources of reference(Not in any order of importance, all of them helped in on
 2. LinkedIn Learning
 3. Youtube
 4. Swift and apple developer Documentation
+
+My Learning Notes detailed :
+
+https://www.notion.so/Swift-203da5d743408063b319f8a14b8ad16a?source=copy_link
