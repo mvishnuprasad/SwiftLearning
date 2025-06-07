@@ -259,15 +259,70 @@ PlaygroundPage.current.needsIndefiniteExecution=true
 //    num += "\(i)"
 //}
 //print(num)
+//
+//class ArcTest {
+//    deinit{
+//        print("Deallocated")
+//    }
+//}
+//unowned var arcTest : ArcTest? = ArcTest()
+////var owner: ArcTest? = arcTest
+//
+////owner=nil
+//
+////arcTest = nil
 
-class ArcTest {
-    deinit{
-        print("Deallocated")
+
+class Model {
+    var name : String
+    init(name: String) {
+        self.name = name
+    }
+    weak var brand: Brand?
+    deinit {
+        print("Model Deinit")
     }
 }
-unowned var arcTest : ArcTest? = ArcTest()
-//var owner: ArcTest? = arcTest
 
-//owner=nil
 
-//arcTest = nil
+class Brand {
+    var brandName: String
+    init(brandName: String) {
+        self.brandName = brandName
+    }
+     weak var model: Model?
+    deinit {
+        print("Brand Deinit")
+    }
+    
+}
+
+var brand : Brand?
+var model:Model?
+brand?.model = Model(name: "IKon")
+model?.brand = Brand(brandName: "Ford")
+brand = nil
+model = nil
+class Customer {
+    let name: String
+    var card: CreditCard?
+    init(name: String) {
+        self.name = name
+    }
+    deinit { print("\(name) is being deinitialized") }
+}
+
+
+class CreditCard {
+    let number: UInt64
+    unowned let customer: Customer
+    init(number: UInt64, customer: Customer) {
+        self.number = number
+        self.customer = customer
+    }
+    deinit { print("Card #\(number) is being deinitialized") }
+}
+var customer: Customer? = Customer(name: "Vishnu")
+customer?.card = CreditCard(number: 1234_5678_9012_3456, customer: customer!)
+customer = nil
+ 
