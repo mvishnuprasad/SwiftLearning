@@ -214,22 +214,60 @@ PlaygroundPage.current.needsIndefiniteExecution=true
 //    value = 14
 //    print(value)
 //}
-let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
-let semaphore = DispatchSemaphore(value: 2)
+//let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
+//let semaphore = DispatchSemaphore(value: 2)
+//
+//func performAsyncTaskIntoConcurrentQueue() {
+//        for i in 1...6 {
+//            concurrentQueue.async {
+//                print("###### Image \(i) waiting for download ######")
+//                semaphore.wait()
+//                print("###### Downloading Image \(i) ######")
+//                let imageURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
+//                let _ = try! Data(contentsOf: imageURL)
+//                print("###### Image \(i) Downloaded ######")
+//                semaphore.signal()
+//            }
+//        }
+//}
+//
+//
+//performAsyncTaskIntoConcurrentQueue()
+//import Foundation
+//
+//class Person: NSObject {
+//    @objc var name: String
+//    @objc var age: Int
+//    
+//    init(name: String, age: Int) {
+//        self.name = name
+//        self.age = age
+//    }
+//}
+//
+//let person = Person(name: "Alice", age: 25)
+//
+//// Set value using KVC
+//person.setValue("Bob", forKey: "name")
+//
+//// Get value using KVC
+//if let name = person.value(forKey: "name") {
+//    print(name)
+//}
+//var num : String = ""
+//for i in 1...5 {
+//    num += "\(i)"
+//}
+//print(num)
 
-func performAsyncTaskIntoConcurrentQueue() {
-        for i in 1...6 {
-            concurrentQueue.async {
-                print("###### Image \(i) waiting for download ######")
-                semaphore.wait()
-                print("###### Downloading Image \(i) ######")
-                let imageURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
-                let _ = try! Data(contentsOf: imageURL)
-                print("###### Image \(i) Downloaded ######")
-                semaphore.signal()
-            }
-        }
+class ArcTest {
+    deinit{
+        print("Deallocated")
+    }
 }
+unowned var arcTest : ArcTest? = ArcTest()
+//var owner: ArcTest? = arcTest
 
+//owner=nil
 
-performAsyncTaskIntoConcurrentQueue()
+//arcTest = nil
